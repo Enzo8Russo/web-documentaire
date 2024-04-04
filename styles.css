@@ -157,7 +157,50 @@
 
 
 
+.container_modal_01 {
+  padding: 50px; display: flex;align-items: center; justify-content: space-around;
+}
 
+.container_modal_02 {
+  padding: 50px; display: flex;
+}
+
+.content_modal_01 {
+  text-align: center;padding: 20px;
+}
+
+.content_modal_02 {
+  display: flex; padding: 20px;
+}
+
+.link_04 {
+  display: flex;
+    text-decoration: none;
+    transition: all ease 0.7s;
+}
+
+.link_04:hover {
+  transform: scale(0.9);
+}
+
+.img_03 {
+  margin-right: 8px;
+  width: 20px; margin-bottom: 20px;
+  transition: all ease 0.7s;
+}
+
+.img_03:hover {
+  transform: scale(0.9);
+}
+
+.img_04 {
+  width: 200px; margin-bottom: 20px;
+  transition: all ease 0.7s;
+}
+
+.img_04:hover {
+  transform: scale(0.9);
+}
 
 
     /* Style de la fenêtre modale */
@@ -166,7 +209,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(0%, 0%);
+  transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px;
   z-index: 999;

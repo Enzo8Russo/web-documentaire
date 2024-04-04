@@ -30,10 +30,10 @@
     <div class="container">
         <div class="content">
             <h1>
-                Jour 1 : <br><br> 14 juin 1997
+                Jour 1 : <br><br> 14 juin 2007
             </h1>
             <br><br>
-            <span id="countdown" style="font-size: 18px;">Redirection vers le bureau dans : </span>
+            <span id="countdown" style="font-size: 18px;">Redirection vers le bureau dans : 5 secondes</span>
         </div>
     </div>
     <script>

@@ -52,7 +52,7 @@ userInput.addEventListener('keydown', function(event) {
       const countdownElement = document.createElement('span');
       countdownElement.id = 'countdown';
       countdownElement.style.fontSize = '18px';
-      countdownElement.textContent = 'Redirection dans : ';
+      countdownElement.textContent = 'Redirection dans : 5 secondes';
 
       const containerChat = document.getElementById('container_chat');
       containerChat.appendChild(countdownElement);
