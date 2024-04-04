@@ -38,43 +38,36 @@ userInput.addEventListener('input', function(event) {
   }
 });
 
-// Événement pour détecter l'appui sur la touche "Enter"
 userInput.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
-    event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+    event.preventDefault();
 
-    // Récupérer le texte prédéfini correspondant à l'index actuel
     const predefinedText = predefinedMessages[currentMessageIndex];
 
-    // Afficher le message prédéfini dans la chat box
     displayMessage(predefinedText);
-    userInput.value = ''; // Réinitialiser l'input
+    userInput.value = '';
     currentMessageIndex++;
 
-    // Gérer la redirection si c'est le dernier message prédéfini
     if (currentMessageIndex === predefinedMessages.length) {
-      // Créer l'élément span pour le compte à rebours
       const countdownElement = document.createElement('span');
       countdownElement.id = 'countdown';
       countdownElement.style.fontSize = '18px';
       countdownElement.textContent = 'Redirection dans : ';
 
-      // Ajouter le compte à rebours à la div container_chat
       const containerChat = document.getElementById('container_chat');
       containerChat.appendChild(countdownElement);
 
       let seconds = 5;
 
-      // Créer l'intervalle pour le compte à rebours
       const countdownInterval = setInterval(function() {
         seconds--;
         countdownElement.textContent = 'Redirection dans : ' + seconds + ' secondes';
 
         if (seconds <= 0) {
           clearInterval(countdownInterval);
-          window.location.href = 'days_2.php'; // Rediriger vers la page spécifiée
+          window.location.href = 'days_2.php';
         }
-      }, 1000); // Répéter toutes les 1 seconde (1000 millisecondes)
+      }, 1000);
     }
   }
 });

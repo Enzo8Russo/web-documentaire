@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Documentaire - Start</title>
-  <link rel="stylesheet" type="text/css" href="../styles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <style>
         body, html {
             height: 100%;
@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-  <img class="background_1" src="../rectangle_1.jpg">
+  <img class="background_1" src="img/rectangle_1.jpg">
     <div class="container">
         <div class="content">
             <h1>
@@ -38,7 +38,7 @@
     </div>
     <script>
         function redirect() {
-            window.location.href = "../bureau_days_1.php";
+            window.location.href = "bureau_days_1.php";
         }
 
         var seconds = 5;
