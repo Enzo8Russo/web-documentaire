@@ -129,10 +129,10 @@ function getContentForFolder(folderName) {
       return '<h2 style="color: #000;">Liste Des Témoignages :</h2><div class="container_modal_01"><div class="content_modal_01"><a href="img/suspect_01.jpg" target="_BLANK"><img class="img_04" src="img/suspect_01.jpg"></a><p style="color: #000;">Suspect 1</p></div><div class="content_modal_01"><a href="img/suspect_02.jpg" target="_BLANK"><img class="img_04" src="img/suspect_02.jpg"><p style="color: #000;"></a>Suspect 2</p></div><div class="content_modal_01"><a href="img/suspect_03.jpg" target="_BLANK"><img class="img_04" src="img/suspect_03.jpg"><p style="color: #000;"></a>Suspect 3</p></div></div>';
     
     case 'tache':
-      return '<div style="padding: 100px;"><h2 style="color: #000;">Tâches :</h2><br><p style="color: #000;"><input type="checkbox" id="dossierVictime" onchange="verifierCasesCochees()"> Consulter le dossier des suspects</p></div>';
+      return '<div style="padding: 100px;"><h2 style="color: #000;">Tâches :</h2><br><p style="color: #000;"><input type="checkbox" id="dossierVictime" onchange="verifierCasesCochees()"> Consulter le dossier des suspects<br><br><input type="checkbox" id="dossierTemoignages" onchange="verifierCasesCochees()"> Consulter la corbeille<br></p></div>';
     
     case 'Corbeille':
-      return '<h2 style="color: #000;">Corbeille :</h2><div class="container_modal_02"><div class="content_modal_02"><a href="img/partage.png" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">partagé.txt</p></a></div></div>';
+      return '<h2 style="color: #000;">Corbeille :</h2><div class="container_modal_02"><div class="content_modal_02"><a href="img/partage.jpg" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">partagé.txt</p></a></div></div>';
     default:
       return '<p style="color: #000;">Contenue par défault...</p>';
   }
@@ -151,8 +151,9 @@ function getContentForFolder(folderName) {
     // Fonction pour vérifier si toutes les cases à cocher sont cochées
     function verifierCasesCochees() {
         var dossierVictime = document.getElementById('dossierVictime').checked;
+        var dossierTemoignages = document.getElementById('dossierTemoignages').checked;
         
-        if (dossierVictime) {
+        if (dossierVictime && dossierTemoignages) {
             // Si toutes les cases sont cochées, débloquer le code
             document.getElementById('codeDebloque').style.display = 'inline';
         } else {
