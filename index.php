@@ -8,15 +8,15 @@
 </head>
 <body>
 <img class="background_1" src="../background.jpg">
-<div style="display: flex; align-items: center; justify-content: center;">
+<div style="display: flex; align-items: end; justify-content: center;">
   <h1 style="    color: #fff;
       font-size: 130px;
       width: 80%;
       padding-top: 200px;
       padding-left: 75px;">LE SHERIFF JOHN</h1>
 
-  <a href="#" >
-    <img src="../start.png" style="    width: 200px;">
+  <a href="../days_1.php">
+    <img class="start_img" src="../start.png">
   </a>
 </div>
 </body>

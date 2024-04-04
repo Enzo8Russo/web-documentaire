@@ -71,11 +71,20 @@
     }
 
     .folder-image {
-      width: 80%;
+      width: 70%;
+    }
+
+    .folder-image_ {
+      width: 70%;
+      transition: all ease 0.7s;
+    }
+
+    .folder-image_:hover {
+      transform: scale(0.93);
     }
 
     .folder-span {
-      color: #fff;
+      color: #000;
       display: block;
     }
 
@@ -162,7 +171,7 @@
   padding: 10px;
   z-index: 999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  user-select: none; /* Empêche la sélection de texte dans la fenêtre modale */
+  user-select: none;
 }
 
 
@@ -172,9 +181,9 @@
 }
 
 .modal-content {
-  background-color: rgba(5, 5, 5, 1);
+  background: #fff;
   padding: 20px;
-  color: #fff;
+  color: #000 !important;
   z-index: 999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   user-drag: none;
@@ -182,11 +191,16 @@
 
     .close-btn {
       position: absolute;
-      top: 50px;
-      right: 50px;
-      cursor: pointer;
-      padding: 15px;
-    font-size: 20px;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+        color: #000 !important;
+        font-weight: 700;
+        padding: 4px 8px;
+    font-size: 15px;
+    background: #D9D9D9;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
     }
 
     .index_a_2 {
@@ -208,4 +222,17 @@
 	background: transparent;
     color: #fff;
     border: 1px solid #fff;
+}
+
+.start_img {
+  max-width: 250px;
+  width: 100%;
+  margin-right: 50px;
+  opacity: 1;
+  transition: all ease 0.7s;
+}
+
+.start_img:hover {
+  opacity: 0.8;
+  transform: scale(0.9);
 }
