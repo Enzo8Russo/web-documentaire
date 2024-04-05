@@ -26,6 +26,11 @@
         <span class="folder-span">Témoignage</span>
     </div>
 
+    <div id="item6" class="folder-item" onclick="openFolderWindow('VSuspects', 'modal-vtheories')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img class="folder-image" src="img/dossier_1.png" alt="Dossier fermé">
+        <span class="folder-span">Vidéos</span>
+    </div>
+
     <!--<div class="folder-item" onclick="openFolderWindow('Aladdin', 'modal-Aladdin')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <div style="width: 100%;">
             <img class="folder-image" src="img/dossier_1.png" alt="Dossier fermé">
@@ -51,7 +56,7 @@
 <div class="folder-container">
     <div id="item5" class="folder-item" onclick="openFolderWindow('Corbeille', 'modal-Corbeille')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <div style="width: 100%;">
-            <img class="folder-image_" src="img/corbeille_pleine.png" alt="Dossier fermé">
+            <img class="folder-image_" src="img/corbeille_vraiment.png" alt="Dossier fermé">
         </div>
         <span class="folder-span">Corbeille</span>
     </div>
@@ -98,12 +103,12 @@
 
 
 <div style="position: fixed; bottom: 0; background: #CAC6CB; width: 100%; height: 50px; border-top: 3px solid #EFEEEF;">
-  <a href="days_3.php" target="_BLANK" style="text-decoration: none;cursor: pointer;">
+  <a href="fin_4.php" target="_BLANK" style="text-decoration: none;cursor: pointer;">
     <img src="img/porte_fermee_1.png" id="fezibezhbfez" class="bureau_sortit" style="padding: 6px;margin-left: 10px;" onmouseover="changeImage_1(this)" onmouseout="resetImage_1(this)">
   </a>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var items = ["item4", "item5", "codeDebloque"];
+        var items = ["item1", "item2", "item3", "item4", "item5", "item6", "codeDebloque"];
         var doorLink = document.querySelector('a[target="_BLANK"]');
         var doorClicked = false;
 
@@ -288,16 +293,19 @@ function getContentForFolder(folderName) {
       return '<h2 style="color: #000;">Liste Des Témoignages :</h2><div class="container_modal_01"><div class="content_modal_01"><a href="img/temoignage_01.jpg" target="_BLANK"><img class="img_04" src="img/temoignage_01.jpg"></a><p style="color: #000;">Témoignage anonyme 1</p></div><div class="content_modal_01"><a href="img/temoignage_02.jpg" target="_BLANK"><img class="img_04" src="img/temoignage_02.jpg"><p style="color: #000;"></a>Témoignage anonyme 2</p></div></div>';
     
     case 'tache':
-      return '<div style="padding: 100px;"><h2 style="color: #000;">Tâches :</h2><br><p style="color: #000;"><input type="checkbox" id="dossierVictime" onchange="verifierCasesCochees()"> Consulter le dossier des suspects<br><br><input type="checkbox" id="dossierTemoignages" onchange="verifierCasesCochees()"> Consulter la corbeille<br></p></div>';
+      return '<div style="padding: 100px;"><h2 style="color: #000;">Tâches :</h2><br><p style="color: #000;"><input type="checkbox" id="dossierVictime" onchange="verifierCasesCochees()"> Consulter le dossier des Vidéos<br><br><input type="checkbox" id="dossierTemoignages" onchange="verifierCasesCochees()"> Consulter la corbeille<br></p></div>';
 
       case 'Suspects':
       return '<h2 style="color: #000;">Liste Des Suspects :</h2><div class="container_modal_01"><div class="content_modal_01"><a href="img/suspect_01.jpg" target="_BLANK"><img class="img_04" src="img/suspect_01.jpg"></a><p style="color: #000;">Suspect 1</p></div><div class="content_modal_01"><a href="img/suspect_02.jpg" target="_BLANK"><img class="img_04" src="img/suspect_02.jpg"><p style="color: #000;"></a>Suspect 2</p></div><div class="content_modal_01"><a href="img/suspect_03.jpg" target="_BLANK"><img class="img_04" src="img/suspect_03.jpg"><p style="color: #000;"></a>Suspect 3</p></div></div>';
 
+      case 'VSuspects':
+      return '<h2 style="color: #000;">Vidéos Des Suspects :</h2><div class="container_modal_01"><div class="content_modal_01"><a href="img/suspect_01.jpg" target="_BLANK"><iframe src="https://cdn.jwplayer.com/players/CZjJ5kPM-iLNG6GXj.html" width="320" height="180" frameborder="0" scrolling="auto" title="Suspect 1" allowfullscreen></iframe></a><p style="color: #000;">Suspect 1</p></div><div class="content_modal_01"><a href="img/suspect_02.jpg" target="_BLANK"><iframe src="https://cdn.jwplayer.com/players/cVY1ydBQ-iLNG6GXj.html" width="320" height="180" frameborder="0" scrolling="auto" title="Suspect 2" allowfullscreen></iframe><p style="color: #000;"></a>Suspect 2</p></div><div class="content_modal_01"><a href="img/suspect_03.jpg" target="_BLANK"><iframe src="https://cdn.jwplayer.com/players/LBuwvm6M-iLNG6GXj.html" width="320" height="180" frameborder="0" scrolling="auto" title="Suspect 3" allowfullscreen></iframe><p style="color: #000;"></a>Suspect 3</p></div></div>';
+
     case 'porte':
-       return '<link rel="stylesheet" href="styles_chat.css"><style type="text/css">#countdown {display: flex;align-items: center;justify-content: center;}</style><h1>MyChat</h1><div class="chat-container"><h3>Lucas</h3><div class="chat-box" id="chat-box"></div><input type="text" id="user-input" placeholder="Type your message..."></div><script src="script2.js"><//script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><//script>';
+       return '<link rel="stylesheet" href="styles_chat.css"><style type="text/css">#countdown {display: flex;align-items: center;justify-content: center;}</style><h1>MyChat</h1><div class="chat-container"><h3>Lucas</h3><div class="chat-box" id="chat-box"></div><input type="text" id="user-input" placeholder="Type your message..."></div><script src="script3.js"><//script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><//script>';
 
        case 'Corbeille':
-      return '<h2 style="color: #000;">Corbeille :</h2><div class="container_modal_02"><div class="content_modal_02"><a href="img/partage.jpg" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">partagé.txt</p></a></div></div>';
+      return '<h2 style="color: #000;">Corbeille :</h2><div class="container_modal_02" style="display: block !important;"><div style="padding: 10px;padding-bottom: 30px;"><a style="margin-right: 30px;" class="ezbfe" href="fin_2.php">Vider la Corbeille</a><a class="ezbfe" href="fin_1.php">Récupérer les fichiers</a></div><div class="content_modal_02"><a href="img/partage.jpg" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">partagé.txt</p></a></div><div class="content_modal_02"><a href="img/fichier_a_supprimer.jpg" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">Fichier_de_témoignage.pdf</p></a></div><div class="content_modal_02"><a href="img/rapport_medical.jpg" class="link_04" target="_BLANK"><img class="img_03" src="img/txt.png"><p style="color: #000;">Fiche_medical.pdf</p></a></div></div>';
 
     default:
       return '<p style="color: #000;">Contenue par défault...</p>';

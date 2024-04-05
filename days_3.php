@@ -23,16 +23,6 @@
             color: #fff;
             font-size: 40px;
         }
-
-        /* Style pour le bouton */
-        .custom-button {
-            background-color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
@@ -40,31 +30,29 @@
     <div class="container">
         <div class="content">
             <h1>
-                Jour 1 : <br><br> 14 juin 2007
+                Jour 3 : <br><br> 16 juin 2007
             </h1>
             <br><br>
-            <button class="custom-button" onclick="playSoundAndRedirect()">Aller au bureau</button>
+            <span id="countdown" style="font-size: 18px;">Redirection vers le bureau dans : 5 secondes</span>
         </div>
     </div>
-
-    <!-- Audio element for playing sound -->
-    <audio id="sound" src="music/morning-sound.mp3"></audio>
-
     <script>
-        function playSoundAndRedirect() {
-            var audio = document.getElementById('sound');
-            audio.play();
-            
-            setTimeout(function() {
-                redirect();
-            }, 5000); // Rediriger après 5 secondes
-        }
-
         function redirect() {
-            window.location.href = "bureau_days_1.php";
+            window.location.href = "bureau_days_3.php";
         }
 
-        
+        var seconds = 5;
+        var countdownElement = document.getElementById('countdown');
+
+        var countdownInterval = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = "Redirection vers le bureau dans : " + seconds + " secondes";
+
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                redirect();
+            }
+        }, 1000);
     </script>
 </body>
 </html>

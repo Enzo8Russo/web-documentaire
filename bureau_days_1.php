@@ -14,12 +14,12 @@
   <img class="background_2" src="img/sheriff.png">
 
 <div class="folder-container">
-    <div class="folder-item" onclick="openFolderWindow('Victime', 'modal-Victime')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+    <div id="item1" class="folder-item" onclick="openFolderWindow('Victime', 'modal-Victime')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <img class="folder-image" src="img/dossier_1.png" alt="Dossier fermé">
         <span class="folder-span">Victime</span>
     </div>
 
-    <div class="folder-item" onclick="openFolderWindow('Temoignage', 'modal-Temoignage')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+    <div id="item2" class="folder-item" onclick="openFolderWindow('Temoignage', 'modal-Temoignage')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <div style="width: 100%;">
             <img class="folder-image" src="img/dossier_1.png" alt="Dossier fermé">
         </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="folder-container">
-	<div class="folder-item" onclick="openFolderWindow('tache', 'modal-tache')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+	<div id="item3" class="folder-item" onclick="openFolderWindow('tache', 'modal-tache')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <img class="folder-image_" src="img/bloc_notes_1.png" alt="Dossier fermé">
         <span class="folder-span">Tâches</span>
     </div>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="folder-container">
-    <div class="folder-item" onclick="openFolderWindow('Corbeille', 'modal-Corbeille')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+    <div id="item4" class="folder-item" onclick="openFolderWindow('Corbeille', 'modal-Corbeille')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
         <div style="width: 100%;">
             <img class="folder-image_" src="img/corbeille.png" alt="Dossier fermé">
         </div>
@@ -74,6 +74,168 @@
     var image = element.querySelector('.folder-image');
     image.src = 'img/dossier_1.png';
   }
+</script>
+
+<script>
+    // Fonction pour vérifier si toutes les cases à cocher sont cochées
+    function verifierCasesCochees() {
+        var dossierVictime = document.getElementById('dossierVictime').checked;
+        var dossierTemoignages = document.getElementById('dossierTemoignages').checked;
+        
+        if (dossierVictime && dossierTemoignages) {
+            // Si toutes les cases sont cochées, débloquer le code
+            document.getElementById('codeDebloque').style.display = 'inline';
+
+            // Jouer le son
+            var audio = new Audio('music/message.mp3');
+            audio.play();
+        } else {
+            // Sinon, masquer le code débloqué
+            document.getElementById('codeDebloque').style.display = 'none';
+        }
+    }
+</script>
+
+
+<div style="position: fixed; bottom: 0; background: #CAC6CB; width: 100%; height: 50px; border-top: 3px solid #EFEEEF;">
+  <a href="days_2.php" target="_BLANK" style="text-decoration: none;cursor: pointer;">
+    <img src="img/porte_fermee_1.png" id="fezibezhbfez" class="bureau_sortit" style="padding: 6px;margin-left: 10px; opacity: 0.7;" onmouseover="changeImage_1(this)" onmouseout="resetImage_1(this)">
+  </a>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var items = ["item1", "item2", "item3", "item4", "codeDebloque"];
+        var doorLink = document.querySelector('a[target="_BLANK"]');
+        var doorClicked = false;
+
+        // Fonction pour vérifier si tous les éléments autorisés ont été cliqués
+        function checkAllItemsClicked() {
+            for (var i = 0; i < items.length; i++) {
+                if (!document.getElementById(items[i]).classList.contains('clicked')) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Ajouter un écouteur d'événements à chaque div avec un ID autorisé
+        items.forEach(function(itemId) {
+            var itemDiv = document.getElementById(itemId);
+            itemDiv.addEventListener('click', function(event) {
+                if (!doorClicked) {
+                    itemDiv.classList.add('clicked');
+                    console.log("ID de l'élément cliqué : " + itemId);
+                    if (checkAllItemsClicked()) {
+    doorClicked = true;
+    console.log("Tous les éléments ont été cliqués, la porte est débloquée !");
+    var doorImage = document.getElementById("fezibezhbfez");
+    doorImage.classList.add('door-open'); // Ajoute la classe pour déclencher l'animation à l'image
+} else {
+    console.log("Il reste des éléments à cliquer.");
+}
+
+                }
+            });
+        });
+
+        // Ajouter un écouteur d'événements pour le lien de la porte de sortie
+        doorLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (doorClicked) {
+                window.location.href = doorLink.getAttribute('href');
+            } else {
+                console.log("Vous devez d'abord cliquer sur tous les éléments autorisés pour ouvrir la porte !");
+            }
+        });
+    });
+</script>
+
+<style>
+/* Animation pour la porte lorsqu'elle est ouverte */
+.door-open {
+    animation: zoomInOut 0.5s ease-in-out infinite; /* Animation jouée en boucle indéfiniment */
+}
+
+/* Animation pour zoomer et dézoomer */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+        opacity: 1; /* Opacité initiale */
+    }
+    50% {
+        transform: scale(1.1); /* Zoom */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1; /* Retour à l'opacité normale */
+    }
+}
+
+
+</style>
+
+
+
+  <!-- Le code débloqué -->
+<!--<div id="codeDebloque" style="display: none;">
+    <a href="chat.html" target="_BLANK" style="text-decoration: none;">
+        <img src="img/chat.png" style="padding: 6px;margin-left: 10px;">
+        <span style="position: absolute;
+        background: red;
+        padding: 2px 5px;
+        border-radius: 50%;
+        font-size: 10px;
+        color: #fff;
+        font-weight: 600;
+        left: 92px;    bottom: 28px;">1</span>
+    </a>
+</div>-->
+
+<div id="codeDebloque" style="display: none;">
+    <div onclick="openFolderWindow('porte', 'modal-porte')" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <div class="krjfbezhiufb">
+          <img style="position: absolute;
+        left: 71px;
+    bottom: 10px;" src="img/chat.png" style="padding: 6px;margin-left: 10px;">
+        <span style="position: absolute;
+        background: red;
+        padding: 2px 5px;
+        border-radius: 50%;
+        font-size: 10px;
+        color: #fff;
+        font-weight: 600;
+        left: 92px;    bottom: 28px;">1</span>
+        </div>
+    </div>
+</div>
+
+  <span id="heure" style="    position: absolute;
+    right: 29px;
+    bottom: 22px;"></span>
+    <span style="    position: absolute;
+    right: 15px;
+    bottom: 6px; font-size: 13px;">14/06/2007</span>
+</div>
+
+<script>
+  function changeImage_1(element) {
+    element.src = 'img/porte_ouverte_2.png';
+  }
+
+  function resetImage_1(element) {
+    element.src = 'img/porte_fermee_1.png';
+  }
+
+  function mettreAJourHeure() {
+    var maintenant = new Date();
+    var heures = maintenant.getHours();
+    var minutes = maintenant.getMinutes();
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    document.getElementById('heure').textContent = heures + ':' + minutes;
+  }
+
+  mettreAJourHeure();
+
+  setInterval(mettreAJourHeure, 60000);
 </script>
 
 <script>
@@ -131,6 +293,10 @@ function getContentForFolder(folderName) {
     
     case 'Corbeille':
       return '<div style="padding: 100px;"><h2 style="color: #000;">Corbeille</h2><br><p style="color: #000;">La Corbeille est vide !</p></div>';
+
+    case 'porte':
+       return '<link rel="stylesheet" href="styles_chat.css"><style type="text/css">#countdown {display: flex;align-items: center;justify-content: center;}</style><h1>MyChat</h1><div class="chat-container"><h3>Lucas</h3><div class="chat-box" id="chat-box"></div><input type="text" id="user-input" placeholder="Type your message..."></div><script src="script.js"><//script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><//script>';
+
     default:
       return '<p style="color: #000;">Contenue par défault...</p>';
   }
@@ -145,70 +311,23 @@ function getContentForFolder(folderName) {
 
 </script>
 
-<script>
-    // Fonction pour vérifier si toutes les cases à cocher sont cochées
-    function verifierCasesCochees() {
-        var dossierVictime = document.getElementById('dossierVictime').checked;
-        var dossierTemoignages = document.getElementById('dossierTemoignages').checked;
-        
-        if (dossierVictime && dossierTemoignages) {
-            // Si toutes les cases sont cochées, débloquer le code
-            document.getElementById('codeDebloque').style.display = 'inline';
-        } else {
-            // Sinon, masquer le code débloqué
-            document.getElementById('codeDebloque').style.display = 'none';
-        }
-    }
-</script>
+<audio id="audioPlayer" autoplay loop>
+        <source src="music/Shadows_in_the_Night_1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-
-<div style="position: fixed; bottom: 0; background: #CAC6CB; width: 100%; height: 50px; border-top: 3px solid #EFEEEF;">
-  <a href="#" style="text-decoration: none;">
-    <img src="img/porte_fermee_1.png" class="bureau_sortit" style="padding: 6px;margin-left: 10px;" onmouseover="changeImage_1(this)" onmouseout="resetImage_1(this)">
-  </a>
-  <!-- Le code débloqué -->
-<div id="codeDebloque" style="display: none;">
-    <a href="chat.html" target="_BLANK" style="text-decoration: none;">
-        <img src="img/chat.png" style="padding: 6px;margin-left: 10px;">
-        <span style="position: absolute;
-        background: red;
-        padding: 2px 5px;
-        border-radius: 50%;
-        font-size: 10px;
-        color: #fff;
-        font-weight: 600;
-        left: 92px;    bottom: 28px;">1</span>
-    </a>
-</div>
-
-  <span id="heure" style="    position: absolute;
-    right: 29px;
-    bottom: 22px;"></span>
-    <span style="    position: absolute;
-    right: 15px;
-    bottom: 6px; font-size: 13px;">14/06/2007</span>
-</div>
 
 <script>
-  function changeImage_1(element) {
-    element.src = 'img/porte_ouverte_2.png';
-  }
+// Fonction pour tenter de lire le son
+function tenterLecture() {
+    var audio = document.getElementById("audioPlayer");
+    audio.play().catch(function(error) {
+        console.log("La lecture automatique n'a pas été autorisée par le navigateur:", error);
+    });
+}
 
-  function resetImage_1(element) {
-    element.src = 'img/porte_fermee_1.png';
-  }
-
-  function mettreAJourHeure() {
-    var maintenant = new Date();
-    var heures = maintenant.getHours();
-    var minutes = maintenant.getMinutes();
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    document.getElementById('heure').textContent = heures + ':' + minutes;
-  }
-
-  mettreAJourHeure();
-
-  setInterval(mettreAJourHeure, 60000);
+// Appel de la fonction pour tenter la lecture du son
+window.onload = tenterLecture;
 </script>
 
 

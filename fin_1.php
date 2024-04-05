@@ -29,30 +29,15 @@
   <img class="background_1" src="img/rectangle_1.jpg">
     <div class="container">
         <div class="content">
-            <h1>
-                Jour 2 : <br><br> 15 juin 2007
-            </h1>
-            <br><br>
-            <span id="countdown" style="font-size: 18px;">Redirection vers le bureau dans : 5 secondes</span>
+            <h1>Fin</h1>
+            <br>
+            <p style="padding: 10px 80px;">Vous avez décidé de livrer votre frère à la justice. Il sera emmené dans un hôpital psychiatrique en raison du danger qu’il représente.
+ <br><br>
+En ce qui vous concerne, vous serez jugé et écoperez d’une peine de 10 ans de prison pour complicité avec le meurtrier
+ 
+ </p>
+            
         </div>
     </div>
-    <script>
-        function redirect() {
-            window.location.href = "bureau_days_2.php";
-        }
-
-        var seconds = 5;
-        var countdownElement = document.getElementById('countdown');
-
-        var countdownInterval = setInterval(function() {
-            seconds--;
-            countdownElement.textContent = "Redirection vers le bureau dans : " + seconds + " secondes";
-
-            if (seconds <= 0) {
-                clearInterval(countdownInterval);
-                redirect();
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
